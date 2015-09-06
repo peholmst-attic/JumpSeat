@@ -2,11 +2,11 @@
 
 void JumpSeat::ModemIO::addOnSMSHandler(const OnSMSHandler& handler)
 {
-    smsSignal.connect(handler);
+    smsSignal_.connect(handler);
 }
 
 void JumpSeat::ModemIO::addOnPhoneCallHandler(const OnPhoneCallHandler& handler) {
-    phoneCallSignal.connect(handler);
+    phoneCallSignal_.connect(handler);
 }
 
 void JumpSeat::ModemIO::signalFakeSms(const std::string& message)
@@ -15,5 +15,5 @@ void JumpSeat::ModemIO::signalFakeSms(const std::string& message)
     SMS sms;
     sms.message = message;
     sms.timestamp = *localtime(&now);
-    smsSignal(sms);
+    smsSignal_(sms);
 }

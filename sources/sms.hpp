@@ -7,17 +7,15 @@
 
 namespace JumpSeat 
 {
-
     struct SMS
     {
         std::string sender;
         std::string message;
-        tm timestamp;
+        std::tm timestamp;
     };
     
     typedef boost::signals2::signal<void (const SMS&)> OnSMS;
-    typedef OnSMS::slot_type OnSMSHandler;
-    
+    typedef OnSMS::slot_type OnSMSHandler; 
 }
 
 #endif	/* SMS_HPP */

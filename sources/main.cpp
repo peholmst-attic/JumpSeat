@@ -4,13 +4,15 @@
 #include "sms_logger.hpp"
 #include "alert_dispatcher.hpp"
 #include "response_dispatcher.hpp"
+#include "alert_type_repository.hpp"
 
 using namespace std;
 
 int main(int argc, char** argv) {
     auto modemIO = JumpSeat::ModemIO();
     auto smsLogger = JumpSeat::SMSLogger();
-    auto alertDispatcher = JumpSeat::AlertDispatcher();
+    auto alertTypeRepository = JumpSeat::AlertTypeRepository();
+    auto alertDispatcher = JumpSeat::AlertDispatcher(alertTypeRepository);
     auto responseDispatcher = JumpSeat::ResponseDispatcher();
     
     modemIO.addOnSMSHandler(boost::bind(&JumpSeat::SMSLogger::onReceiveSMS, &smsLogger, _1));

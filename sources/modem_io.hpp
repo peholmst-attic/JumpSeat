@@ -15,8 +15,8 @@ namespace JumpSeat
         void addOnPhoneCallHandler(const OnPhoneCallHandler& handler);
         void signalFakeSms(const std::string& message);
     private:
-        OnSMS smsSignal;
-        OnPhoneCall phoneCallSignal;        
+        OnSMS smsSignal_;
+        OnPhoneCall phoneCallSignal_;        
     };   
 }
 

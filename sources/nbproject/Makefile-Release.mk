@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/alert_dispatcher.o \
+	${OBJECTDIR}/alert_type_repository.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/modem_io.o \
 	${OBJECTDIR}/response_dispatcher.o \
@@ -70,6 +71,11 @@ ${OBJECTDIR}/alert_dispatcher.o: alert_dispatcher.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/alert_dispatcher.o alert_dispatcher.cpp
+
+${OBJECTDIR}/alert_type_repository.o: alert_type_repository.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/alert_type_repository.o alert_type_repository.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

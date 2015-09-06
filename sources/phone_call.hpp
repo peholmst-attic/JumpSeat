@@ -7,16 +7,14 @@
 
 namespace JumpSeat 
 {
-
     struct PhoneCall
     {
         std::string number;
-        tm timestamp;
+        std::tm timestamp;
     };
     
     typedef boost::signals2::signal<void (const PhoneCall&)> OnPhoneCall;
-    typedef OnPhoneCall::slot_type OnPhoneCallHandler;
-    
+    typedef OnPhoneCall::slot_type OnPhoneCallHandler;    
 }
 
 #endif	/* PHONE_CALL_HPP */
