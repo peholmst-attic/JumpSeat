@@ -73,6 +73,8 @@
       </item>
       <item path="alert_dispatcher.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="alert_logger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="alert_logger.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="alert_type.hpp" ex="false" tool="3" flavor2="0">
@@ -133,6 +135,8 @@
       <item path="alert_dispatcher.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="alert_dispatcher.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alert_logger.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="alert_logger.hpp" ex="false" tool="3" flavor2="0">
       </item>

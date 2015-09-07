@@ -16,6 +16,11 @@ void JumpSeat::AlertDispatcher::setAlertRegex(const std::regex& regex)
     regex_ = regex;
 }
 
+void JumpSeat::AlertDispatcher::setAlertFormat(const std::string& format)
+{
+    
+}
+
 void JumpSeat::AlertDispatcher::onReceiveSMS(const SMS& sms)
 {
     if (isAlert(sms))
@@ -27,10 +32,22 @@ void JumpSeat::AlertDispatcher::onReceiveSMS(const SMS& sms)
 
 bool JumpSeat::AlertDispatcher::isAlert(const SMS& sms)
 {
-    return false; // TODO
+    return std::regex_match(sms.message, regex_);
+}
+
+std::string JumpSeat::AlertDispatcher::extractCode(const SMS& sms)
+{
+    return ""; // TODO
 }
 
 JumpSeat::Alert JumpSeat::AlertDispatcher::createAlert(const SMS& sms)
-{
-    return Alert(); // TODO
+{    
+    std::string code = extractCode(sms);
+    auto alertType = alertTypeRepository_.findByCode(code);
+    Alert alert = {
+        alertType,
+        sms.message,
+        sms.timestamp
+    };
+    return alert;
 }

@@ -3,6 +3,7 @@
 
 #include <ctime>
 #include <string>
+#include <boost/optional.hpp>
 #include <boost/signals2/signal.hpp>
 
 #include "alert_type.hpp"
@@ -11,7 +12,7 @@ namespace JumpSeat
 {
     struct Alert
     {
-        AlertType type;
+        boost::optional<AlertType> type;
         std::string message;
         std::tm timestamp;
     };

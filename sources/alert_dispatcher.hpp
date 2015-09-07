@@ -15,6 +15,7 @@ namespace JumpSeat
         AlertDispatcher(const AlertTypeRepository& alertTypeRepository);
         void addOnAlertHandler(const OnAlertHandler& handler);
         void setAlertRegex(const std::regex& regex);
+        void setAlertFormat(const std::string& format);
         void onReceiveSMS(const SMS& sms);  
     private:
         const AlertTypeRepository& alertTypeRepository_;
@@ -22,6 +23,7 @@ namespace JumpSeat
         OnAlert alertSignal_;
         
         bool isAlert(const SMS& sms);
+        std::string extractCode(const SMS& sms);
         Alert createAlert(const SMS& sms);
     };
 }

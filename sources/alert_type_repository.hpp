@@ -10,7 +10,7 @@ namespace JumpSeat
     class AlertTypeRepository
     {
     public:
-        boost::optional<AlertType> findByCode(const std::string& code);
+        boost::optional<AlertType> findByCode(const std::string& code) const;
     };
 }
 
