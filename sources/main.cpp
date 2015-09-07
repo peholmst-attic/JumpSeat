@@ -15,11 +15,16 @@ int main(int argc, char** argv) {
     auto smsLogger = JumpSeat::SMSLogger();
     auto alertTypeRepository = JumpSeat::AlertTypeRepository();
     
-    auto alertDispatcher = JumpSeat::AlertDispatcher(alertTypeRepository);
-    alertDispatcher.setAlertRegex(std::regex("^TKU (.+),(.*),(.*),(.*),(.*),(.*),(.*),(.*)"));
-    // TODO What should this format be in? Would love to be able to use regex and extract parts of it into variables
-    alertDispatcher.setAlertFormat("TKU {code}{urgency},{region},{region},{address},{address},{name},*");
-    
+    auto alertDispatcher = JumpSeat::AlertDispatcher(alertTypeRepository);    
+    alertDispatcher.setAlertRegex(
+        std::regex("^TKU (.+),(.*,.*),(.*,.*,.*),.*"), // TODO This does not work as expected
+        std::vector<JumpSeat::AlertField>{
+            JumpSeat::AlertField::code, 
+            JumpSeat::AlertField::municipality, 
+            JumpSeat::AlertField::address
+        }
+    );
+        
     auto responseDispatcher = JumpSeat::ResponseDispatcher();
     auto alertLogger = JumpSeat::AlertLogger();
     

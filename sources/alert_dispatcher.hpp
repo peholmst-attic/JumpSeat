@@ -1,6 +1,7 @@
 #ifndef ALERT_DISPATCHER_HPP
 #define	ALERT_DISPATCHER_HPP
 
+#include <vector>
 #include <regex>
 
 #include "sms.hpp"
@@ -14,17 +15,18 @@ namespace JumpSeat
     public:
         AlertDispatcher(const AlertTypeRepository& alertTypeRepository);
         void addOnAlertHandler(const OnAlertHandler& handler);
-        void setAlertRegex(const std::regex& regex);
-        void setAlertFormat(const std::string& format);
+        void setAlertRegex(const std::regex& regex, const std::vector<AlertField>& fields);
         void onReceiveSMS(const SMS& sms);  
     private:
         const AlertTypeRepository& alertTypeRepository_;
-        std::regex regex_;        
+        std::regex regex_;      
+        std::vector<AlertField> fields_; 
         OnAlert alertSignal_;
         
         bool isAlert(const SMS& sms);
         std::string extractCode(const SMS& sms);
         Alert createAlert(const SMS& sms);
+        void setAlertField(const AlertField& field, const std::string& value, Alert& alert);
     };
 }
 

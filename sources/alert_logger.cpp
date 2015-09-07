@@ -4,5 +4,7 @@
 
 void JumpSeat::AlertLogger::onReceiveAlert(const Alert& alert)
 {
-    std::cout << "Received alert: " << alert.message << std::endl;
+    std::cout << "=====" << std::endl;
+    std::cout << "Received alert: " << alert.municipality.value() << ": " << alert.address.value() << std::endl;
+    std::cout << "=====" << std::endl;
 }

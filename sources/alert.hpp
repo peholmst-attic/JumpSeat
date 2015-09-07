@@ -13,8 +13,17 @@ namespace JumpSeat
     struct Alert
     {
         boost::optional<AlertType> type;
+        boost::optional<std::string> municipality;
+        boost::optional<std::string> address;
         std::string message;
         std::tm timestamp;
+    };
+    
+    enum class AlertField
+    {
+        code,
+        municipality,
+        address
     };
     
     typedef boost::signals2::signal<void (const Alert&)> OnAlert;
