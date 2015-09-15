@@ -17,11 +17,12 @@ int main(int argc, char** argv) {
     
     auto alertDispatcher = JumpSeat::AlertDispatcher(alertTypeRepository);    
     alertDispatcher.setAlertRegex(
-        std::regex("^TKU (.+),(.*,.*),(.*,.*,.*),.*"), // TODO This does not work as expected
+        std::regex("^TKU ([A-Za-z\\s]*[0-9]+)[\\w\\s],([\\w\\s]*,[\\w\\s]*),([\\w\\s]*,[\\w\\s]*,[\\w\\s]*),(.*)"),
         std::vector<JumpSeat::AlertField>{
             JumpSeat::AlertField::code, 
             JumpSeat::AlertField::municipality, 
-            JumpSeat::AlertField::address
+            JumpSeat::AlertField::address,
+            JumpSeat::AlertField::details
         }
     );
         
@@ -39,7 +40,8 @@ int main(int argc, char** argv) {
     modemIO.signalFakeSms("TKU 432 ,PARGAS,,address,,,RVSPG11,RVSPG31,RVSPG13,RVSIT3,,description");
     modemIO.signalFakeSms("TKU 402A,PARGAS,NAGU,address,,,RVSPG11,RVSPG31,RVSPG13,RVSIT3,,description");
     modemIO.signalFakeSms("TKU 203A,PARGAS,,address1,address2,,RVSPG11,RVSPG31,,description");
-    modemIO.signalFakeSms("TKU 103 ,PARGAS,,address,,name,RVSPG11,RVSPG31,,description");
+    modemIO.signalFakeSms("TKU 103 ,PARGAS,,address,,name,RVSPG11,RVSPG31,,description ");
+    modemIO.signalFakeSms("TKU ANNULERING AV UPPDRAG 221 ,PARGAS,NAGU,,,,");
     modemIO.signalFakeSms("Another SMS");
     
     return 0;

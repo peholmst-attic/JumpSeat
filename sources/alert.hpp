@@ -12,9 +12,10 @@ namespace JumpSeat
 {
     struct Alert
     {
-        boost::optional<AlertType> type;
+        AlertType type;
         boost::optional<std::string> municipality;
         boost::optional<std::string> address;
+        boost::optional<std::string> details;
         std::string message;
         std::tm timestamp;
     };
@@ -23,7 +24,8 @@ namespace JumpSeat
     {
         code,
         municipality,
-        address
+        address,
+        details
     };
     
     typedef boost::signals2::signal<void (const Alert&)> OnAlert;

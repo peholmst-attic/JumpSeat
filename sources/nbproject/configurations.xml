@@ -32,6 +32,7 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="modules" projectFiles="true">
         <itemPath>alert_dispatcher.cpp</itemPath>
+        <itemPath>alert_logger.cpp</itemPath>
         <itemPath>alert_type_repository.cpp</itemPath>
         <itemPath>modem_io.cpp</itemPath>
         <itemPath>response_dispatcher.cpp</itemPath>

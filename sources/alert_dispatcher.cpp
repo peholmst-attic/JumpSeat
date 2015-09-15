@@ -39,7 +39,7 @@ JumpSeat::Alert JumpSeat::AlertDispatcher::createAlert(const SMS& sms)
     Alert alert;
     for (int i = 0; i < fields_.size(); ++i)
     {
-        setAlertField(fields_[i], m[i], alert);
+        setAlertField(fields_[i], m[i+1], alert);
     }    
     alert.message = sms.message;
     alert.timestamp = sms.timestamp;
@@ -50,14 +50,27 @@ void JumpSeat::AlertDispatcher::setAlertField(const AlertField& field, const std
 {
     switch(field) 
     {
-        case AlertField::address:
-            alert.address = value; 
+        case AlertField::address: {
+            alert.address = trim(value); 
             break;
-        case AlertField::code:
-            alert.type = alertTypeRepository_.findByCode(value);
+        }
+        case AlertField::code: {
+            auto code = trim(value);
+            auto alertType = alertTypeRepository_.findByCode(code);
+            alert.type = alertType.get_value_or(AlertType{"", code});
             break;
-        case AlertField::municipality:
-            alert.municipality = value;
+        }
+        case AlertField::municipality: {
+            alert.municipality = trim(value);
             break;
+        }
+        case AlertField::details: {
+            alert.details = trim(value);
+            break;
+        }
     }
+}
+
+std::string JumpSeat::AlertDispatcher::trim(const std::string& s) {
+    return std::regex_replace(s, std::regex("[^\\w]+$"), "");
 }

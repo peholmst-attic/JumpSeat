@@ -24,9 +24,9 @@ namespace JumpSeat
         OnAlert alertSignal_;
         
         bool isAlert(const SMS& sms);
-        std::string extractCode(const SMS& sms);
         Alert createAlert(const SMS& sms);
         void setAlertField(const AlertField& field, const std::string& value, Alert& alert);
+        std::string trim(const std::string& s);
     };
 }
 
