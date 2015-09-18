@@ -3,3 +3,5 @@
 /sources/nbproject/private
 /boost*
 /sqlite*
+*.db
+
