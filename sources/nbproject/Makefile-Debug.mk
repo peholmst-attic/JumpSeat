@@ -35,9 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/810597573/sqlite3.o \
 	${OBJECTDIR}/alert_dispatcher.o \
 	${OBJECTDIR}/alert_logger.o \
 	${OBJECTDIR}/alert_type_repository.o \
+	${OBJECTDIR}/db.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/modem_io.o \
 	${OBJECTDIR}/response_dispatcher.o \
@@ -58,7 +60,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L../boost/stage/lib
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -68,40 +70,50 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sources: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sources ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/_ext/810597573/sqlite3.o: ../sqlite/sqlite3.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/810597573
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/810597573/sqlite3.o ../sqlite/sqlite3.c
+
 ${OBJECTDIR}/alert_dispatcher.o: alert_dispatcher.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../boost_1_58_0 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/alert_dispatcher.o alert_dispatcher.cpp
+	$(COMPILE.cc) -g -I../boost -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/alert_dispatcher.o alert_dispatcher.cpp
 
 ${OBJECTDIR}/alert_logger.o: alert_logger.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../boost_1_58_0 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/alert_logger.o alert_logger.cpp
+	$(COMPILE.cc) -g -I../boost -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/alert_logger.o alert_logger.cpp
 
 ${OBJECTDIR}/alert_type_repository.o: alert_type_repository.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../boost_1_58_0 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/alert_type_repository.o alert_type_repository.cpp
+	$(COMPILE.cc) -g -I../boost -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/alert_type_repository.o alert_type_repository.cpp
+
+${OBJECTDIR}/db.o: db.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../boost -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/db.o db.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../boost_1_58_0 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I../boost -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/modem_io.o: modem_io.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../boost_1_58_0 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/modem_io.o modem_io.cpp
+	$(COMPILE.cc) -g -I../boost -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/modem_io.o modem_io.cpp
 
 ${OBJECTDIR}/response_dispatcher.o: response_dispatcher.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../boost_1_58_0 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/response_dispatcher.o response_dispatcher.cpp
+	$(COMPILE.cc) -g -I../boost -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/response_dispatcher.o response_dispatcher.cpp
 
 ${OBJECTDIR}/sms_logger.o: sms_logger.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../boost_1_58_0 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/sms_logger.o sms_logger.cpp
+	$(COMPILE.cc) -g -I../boost -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/sms_logger.o sms_logger.cpp
 
 # Subprojects
 .build-subprojects:

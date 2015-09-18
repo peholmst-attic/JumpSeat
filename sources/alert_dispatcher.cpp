@@ -1,7 +1,7 @@
 #include "alert_dispatcher.hpp"
 #include <iostream>
 
-JumpSeat::AlertDispatcher::AlertDispatcher(const JumpSeat::AlertTypeRepository& alertTypeRepository) :
+JumpSeat::AlertDispatcher::AlertDispatcher(JumpSeat::AlertTypeRepository& alertTypeRepository) :
     alertTypeRepository_(alertTypeRepository)
 {
 }

@@ -8,6 +8,7 @@
         <itemPath>alert_dispatcher.hpp</itemPath>
         <itemPath>alert_logger.hpp</itemPath>
         <itemPath>alert_type_repository.hpp</itemPath>
+        <itemPath>db.hpp</itemPath>
         <itemPath>modem_io.hpp</itemPath>
         <itemPath>phone_call_logger.hpp</itemPath>
         <itemPath>resource_repository.hpp</itemPath>
@@ -22,6 +23,7 @@
         <itemPath>resource.hpp</itemPath>
         <itemPath>sms.hpp</itemPath>
       </logicalFolder>
+      <itemPath>../sqlite/sqlite3.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -34,11 +36,13 @@
         <itemPath>alert_dispatcher.cpp</itemPath>
         <itemPath>alert_logger.cpp</itemPath>
         <itemPath>alert_type_repository.cpp</itemPath>
+        <itemPath>db.cpp</itemPath>
         <itemPath>modem_io.cpp</itemPath>
         <itemPath>response_dispatcher.cpp</itemPath>
         <itemPath>sms_logger.cpp</itemPath>
       </logicalFolder>
       <itemPath>main.cpp</itemPath>
+      <itemPath>../sqlite/sqlite3.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -64,10 +68,19 @@
         <ccTool>
           <standard>8</standard>
           <incDir>
-            <pElem>../boost_1_58_0</pElem>
+            <pElem>../boost</pElem>
           </incDir>
         </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>../boost/stage/lib</pElem>
+          </linkerAddLib>
+        </linkerTool>
       </compileType>
+      <item path="../sqlite/sqlite3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../sqlite/sqlite3.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="alert.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="alert_dispatcher.cpp" ex="false" tool="1" flavor2="0">
@@ -83,6 +96,10 @@
       <item path="alert_type_repository.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="alert_type_repository.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="db.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="db.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -131,6 +148,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="../sqlite/sqlite3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../sqlite/sqlite3.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="alert.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="alert_dispatcher.cpp" ex="false" tool="1" flavor2="0">
@@ -146,6 +167,10 @@
       <item path="alert_type_repository.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="alert_type_repository.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="db.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="db.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

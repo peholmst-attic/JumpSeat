@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <sqlite3.h>
 
 #include "modem_io.hpp"
 #include "sms_logger.hpp"
@@ -6,15 +7,18 @@
 #include "response_dispatcher.hpp"
 #include "alert_type_repository.hpp"
 #include "alert_logger.hpp"
+#include "db.hpp"
 
 using namespace std;
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv) 
+{    
     // Create modules
+    auto db = JumpSeat::DB("jumpseat.db");
     auto modemIO = JumpSeat::ModemIO();
-    auto smsLogger = JumpSeat::SMSLogger();
+    auto smsLogger = JumpSeat::SMSLogger(db);
     auto alertTypeRepository = JumpSeat::AlertTypeRepository();
-    
+        
     auto alertDispatcher = JumpSeat::AlertDispatcher(alertTypeRepository);    
     alertDispatcher.setAlertRegex(
         std::regex("^TKU ([A-Za-z\\s]*[0-9]+)[\\w\\s],([\\w\\s]*,[\\w\\s]*),([\\w\\s]*,[\\w\\s]*,[\\w\\s]*),(.*)"),

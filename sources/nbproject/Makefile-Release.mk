@@ -35,9 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/810597573/sqlite3.o \
 	${OBJECTDIR}/alert_dispatcher.o \
 	${OBJECTDIR}/alert_logger.o \
 	${OBJECTDIR}/alert_type_repository.o \
+	${OBJECTDIR}/db.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/modem_io.o \
 	${OBJECTDIR}/response_dispatcher.o \
@@ -68,6 +70,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sources: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/sources ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/_ext/810597573/sqlite3.o: ../sqlite/sqlite3.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/810597573
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/810597573/sqlite3.o ../sqlite/sqlite3.c
+
 ${OBJECTDIR}/alert_dispatcher.o: alert_dispatcher.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -82,6 +89,11 @@ ${OBJECTDIR}/alert_type_repository.o: alert_type_repository.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/alert_type_repository.o alert_type_repository.cpp
+
+${OBJECTDIR}/db.o: db.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/db.o db.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

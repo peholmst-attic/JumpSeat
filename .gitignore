@@ -1,4 +1,5 @@
 /sources/dist/
 /sources/build/
 /sources/nbproject/private
-/boost_*
+/boost*
+/sqlite*
