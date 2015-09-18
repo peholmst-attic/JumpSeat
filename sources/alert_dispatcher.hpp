@@ -8,21 +8,20 @@
 #include "alert.hpp"
 #include "alert_type_repository.hpp"
 
-namespace JumpSeat
-{
-    class AlertDispatcher
-    {
+namespace JumpSeat {
+
+    class AlertDispatcher {
     public:
         AlertDispatcher(AlertTypeRepository& alertTypeRepository);
         void addOnAlertHandler(const OnAlertHandler& handler);
         void setAlertRegex(const std::regex& regex, const std::vector<AlertField>& fields);
-        void onReceiveSMS(const SMS& sms);  
+        void onReceiveSMS(const SMS& sms);
     private:
         AlertTypeRepository& alertTypeRepository_;
-        std::regex regex_;      
-        std::vector<AlertField> fields_; 
+        std::regex regex_;
+        std::vector<AlertField> fields_;
         OnAlert alertSignal_;
-        
+
         bool isAlert(const SMS& sms);
         Alert createAlert(const SMS& sms);
         void setAlertField(const AlertField& field, const std::string& value, Alert& alert);

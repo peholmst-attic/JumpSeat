@@ -4,12 +4,11 @@
 #include "sms.hpp"
 #include "phone_call.hpp"
 
-namespace JumpSeat
-{
-    class ResponseDispatcher
-    {
+namespace JumpSeat {
+
+    class ResponseDispatcher {
     public:
-        void onReceiveSMS(const SMS& sms);     
+        void onReceiveSMS(const SMS& sms);
         void onReceivePhoneCall(const PhoneCall& phoneCall);
     };
 }

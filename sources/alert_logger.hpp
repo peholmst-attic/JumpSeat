@@ -3,10 +3,9 @@
 
 #include "alert.hpp"
 
-namespace JumpSeat
-{
-    class AlertLogger
-    {
+namespace JumpSeat {
+
+    class AlertLogger {
     public:
         void onReceiveAlert(const Alert& alert);
     };

@@ -5,10 +5,9 @@
 
 #include "alert_type.hpp"
 
-namespace JumpSeat
-{
-    class AlertTypeRepository
-    {
+namespace JumpSeat {
+
+    class AlertTypeRepository {
     public:
         boost::optional<AlertType> findByCode(const std::string& code) const;
     };
