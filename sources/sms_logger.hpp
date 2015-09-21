@@ -7,16 +7,15 @@
 #include "sms.hpp"
 #include "db.hpp"
 
-namespace JumpSeat
-{
-    class SMSLogger
-    {
+namespace JumpSeat {
+
+    class SMSLogger {
     public:
         SMSLogger(DB& db);
-        void onReceiveSMS(const SMS& sms);        
+        void onReceiveSMS(const SMS& sms);
     private:
         DB& db_;
-        static const std::string DDL_;
+        PreparedStatement insertSmsStmt_;
     };
 }
 
