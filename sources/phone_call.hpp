@@ -5,16 +5,15 @@
 #include <string>
 #include <boost/signals2/signal.hpp>
 
-namespace JumpSeat 
-{
-    struct PhoneCall
-    {
+namespace JumpSeat {
+
+    struct PhoneCall {
         std::string number;
         std::tm timestamp;
     };
-    
-    typedef boost::signals2::signal<void (const PhoneCall&)> OnPhoneCall;
-    typedef OnPhoneCall::slot_type OnPhoneCallHandler;    
+
+    typedef boost::signals2::signal<void (const PhoneCall&) > OnPhoneCall;
+    typedef OnPhoneCall::slot_type OnPhoneCallHandler;
 }
 
 #endif	/* PHONE_CALL_HPP */

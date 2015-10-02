@@ -9,9 +9,8 @@ void JumpSeat::ModemIO::addOnPhoneCallHandler(const OnPhoneCallHandler& handler)
 }
 
 void JumpSeat::ModemIO::signalFakeSms(const std::string& message) {
-    time_t now = time(0);
     SMS sms;
+    sms.sender = "+358123456";
     sms.message = message;
-    sms.timestamp = *localtime(&now);
     smsSignal_(sms);
 }

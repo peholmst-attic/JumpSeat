@@ -13,7 +13,7 @@ using namespace std;
 
 int main(int argc, char** argv) {
     // Create modules
-    auto db = JumpSeat::DB("jumpseat.db");
+    auto db = JumpSeat::DB("/Users/petterprivate/Projects/JumpSeat/jumpseat.db");
     auto modemIO = JumpSeat::ModemIO();
     auto smsLogger = JumpSeat::SMSLogger(db);
     auto alertTypeRepository = JumpSeat::AlertTypeRepository();

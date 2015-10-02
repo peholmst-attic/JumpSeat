@@ -22,6 +22,7 @@
         <itemPath>phone_call.hpp</itemPath>
         <itemPath>resource.hpp</itemPath>
         <itemPath>sms.hpp</itemPath>
+        <itemPath>time.hpp</itemPath>
       </logicalFolder>
       <itemPath>../sqlite/sqlite3.h</itemPath>
     </logicalFolder>
@@ -127,6 +128,8 @@
       </item>
       <item path="sms_logger.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="time.hpp" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -197,6 +200,8 @@
       <item path="sms_logger.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="sms_logger.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="time.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

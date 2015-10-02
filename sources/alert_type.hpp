@@ -3,10 +3,9 @@
 
 #include <string>
 
-namespace JumpSeat
-{
-    struct AlertType
-    {
+namespace JumpSeat {
+
+    struct AlertType {
         std::string code;
         std::string description;
     };

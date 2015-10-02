@@ -59,6 +59,15 @@ void JumpSeat::PreparedStatement::setDouble(const int index, const double value)
             "error setting double");
 }
 
+void JumpSeat::PreparedStatement::execute() {
+    int code = sqlite3_step(stmt_);
+    if (code == SQLITE_DONE) {
+        reset();
+    } else {
+        throw DBException(code, "unexpected result while executing statement");
+    }
+}
+
 void JumpSeat::PreparedStatement::throwOnError(const int code, const std::string& message) {
     if (code != SQLITE_OK) {
         throw DBException(code, message);
