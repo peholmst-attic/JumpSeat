@@ -4,12 +4,17 @@
 #include <boost/optional.hpp>
 
 #include "alert_type.hpp"
+#include "db.hpp"
 
 namespace JumpSeat {
 
     class AlertTypeRepository {
     public:
-        boost::optional<AlertType> findByCode(const std::string& code) const;
+        AlertTypeRepository(DB& db);
+        boost::optional<AlertType> findByCode(const std::string& code);
+    private:
+        DB& db_;
+        PreparedStatement findByCodeStmt_;
     };
 }
 

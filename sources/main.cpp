@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
     auto db = JumpSeat::DB("/Users/petterprivate/Projects/JumpSeat/jumpseat.db");
     auto modemIO = JumpSeat::ModemIO();
     auto smsLogger = JumpSeat::SMSLogger(db);
-    auto alertTypeRepository = JumpSeat::AlertTypeRepository();
+    auto alertTypeRepository = JumpSeat::AlertTypeRepository(db);
 
     auto alertDispatcher = JumpSeat::AlertDispatcher(alertTypeRepository);
 

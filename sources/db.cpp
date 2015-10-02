@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "db.hpp"
 
 JumpSeat::DB::DB(const std::string& dbFile) {
@@ -68,8 +66,61 @@ void JumpSeat::PreparedStatement::execute() {
     }
 }
 
-void JumpSeat::PreparedStatement::throwOnError(const int code, const std::string& message) {
+JumpSeat::Cursor JumpSeat::PreparedStatement::executeQuery() {
+    return Cursor(*this);
+}
+
+void JumpSeat::PreparedStatement::throwOnError(const int code, const std::string& message) const {
     if (code != SQLITE_OK) {
         throw DBException(code, message);
+    }
+}
+
+JumpSeat::Cursor::Cursor(PreparedStatement& preparedStatement) :
+preparedStatement_(preparedStatement),
+isDone_(false) {
+    next();
+}
+
+void JumpSeat::Cursor::next() {
+    if (!isDone_) {
+        int code = sqlite3_step(preparedStatement_.stmt_);
+        if (code == SQLITE_DONE) {
+            isDone_ = true;
+            preparedStatement_.reset();
+        } else if (code != SQLITE_ROW) {
+            throw DBException(code, "unexpected result while executing query statement");
+        }
+    }
+}
+
+int JumpSeat::Cursor::getInt(const int index) const {
+    throwIfDone();
+    return sqlite3_column_int(preparedStatement_.stmt_, index);
+}
+
+double JumpSeat::Cursor::getDouble(const int index) const {
+    throwIfDone();
+    return sqlite3_column_double(preparedStatement_.stmt_, index);
+}
+
+std::string JumpSeat::Cursor::getText(const int index) const {
+    throwIfDone();
+    auto text = (const char*) sqlite3_column_text(preparedStatement_.stmt_, index);
+    return std::string(text);
+}
+
+bool JumpSeat::Cursor::isNull(const int index) const {
+    throwIfDone();
+    return sqlite3_column_type(preparedStatement_.stmt_, index) == SQLITE_NULL;
+}
+
+bool JumpSeat::Cursor::isDone() const {
+    return isDone_;
+}
+
+void JumpSeat::Cursor::throwIfDone() const {
+    if (isDone_) {
+        throw CursorException("no more data to read from cursor");
     }
 }

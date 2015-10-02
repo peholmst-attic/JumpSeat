@@ -10,6 +10,7 @@ namespace JumpSeat {
 
     class DBException : public std::exception {
     public:
+
         DBException(const int code, const std::string& message) :
         code_(code), message_(message) {
             std::stringstream stream;
@@ -38,7 +39,21 @@ namespace JumpSeat {
         const int code_;
         const std::string message_;
         std::string what_;
-    };   
+    };
+
+    class CursorException : public std::exception {
+    public:
+
+        CursorException(const std::string& message) :
+        message_(message) {
+        }
+        
+        const char* what() const noexcept {
+            return message_.c_str();
+        }
+    private:
+        const std::string message_;
+    };
 
     class PreparedStatement;
 
@@ -53,7 +68,10 @@ namespace JumpSeat {
         sqlite3* db_;
     };
 
+    class Cursor;
+
     class PreparedStatement {
+        friend class Cursor;
     public:
         PreparedStatement(DB& db, const std::string& sql);
         ~PreparedStatement();
@@ -63,9 +81,25 @@ namespace JumpSeat {
         void setInt(const int index, const int value);
         void setDouble(const int index, const double value);
         void execute();
+        Cursor executeQuery();
     private:
         sqlite3_stmt* stmt_;
-        void throwOnError(const int code, const std::string& message);
+        void throwOnError(const int code, const std::string& message) const;
+    };
+
+    class Cursor {
+    public:
+        Cursor(PreparedStatement& preparedStatement);
+        bool isNull(const int index) const;
+        std::string getText(const int index) const;
+        int getInt(const int index) const;
+        double getDouble(const int index) const;
+        bool isDone() const;
+        void next();
+    private:
+        PreparedStatement& preparedStatement_;
+        bool isDone_;
+        void throwIfDone() const;
     };
 }
 
