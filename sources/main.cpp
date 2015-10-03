@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
     );
 
     auto responseDispatcher = JumpSeat::ResponseDispatcher();
-    auto alertLogger = JumpSeat::AlertLogger();
+    auto alertLogger = JumpSeat::AlertLogger(db);
 
     // Set up handlers
     modemIO.addOnSMSHandler(boost::bind(&JumpSeat::SMSLogger::onReceiveSMS, &smsLogger, _1));

@@ -2,12 +2,17 @@
 #define	ALERT_LOGGER_HPP
 
 #include "alert.hpp"
+#include "db.hpp"
 
 namespace JumpSeat {
 
     class AlertLogger {
     public:
+        AlertLogger(DB& db);
         void onReceiveAlert(const Alert& alert);
+    private:
+        DB& db_;
+        PreparedStatement insertAlertStmt_;
     };
 }
 

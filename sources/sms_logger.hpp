@@ -1,9 +1,6 @@
 #ifndef SMS_LOGGER_HPP
 #define	SMS_LOGGER_HPP
 
-#include <memory>
-#include <sqlite3.h>
-
 #include "sms.hpp"
 #include "db.hpp"
 
