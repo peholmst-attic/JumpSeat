@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="rM6fOj" name="JumpSeat" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="net.pkhapps.jumpseat" includeBinaryInAppConfig="1"
+              jucerVersion="3.2.0">
+  <MAINGROUP id="z6rVze" name="JumpSeat">
+    <GROUP id="{9232A964-D9EC-1FFB-9C3A-E338AF2D0369}" name="Source">
+      <GROUP id="{9BDBBB73-62F9-19D3-71F3-D94E6BA8EDBB}" name="SQLite">
+        <FILE id="lXH6KD" name="sqlite3.c" compile="1" resource="0" file="SQLite/sqlite3.c"/>
+        <FILE id="SjLMX7" name="sqlite3.h" compile="0" resource="0" file="SQLite/sqlite3.h"/>
+      </GROUP>
+      <GROUP id="{69CF736A-DD49-4D04-81B1-35023D5D1A44}" name="Components">
+        <FILE id="es7Kfm" name="DB.cpp" compile="1" resource="0" file="Source/DB.cpp"/>
+        <FILE id="GVsJHG" name="DB.h" compile="0" resource="0" file="Source/DB.h"/>
+        <FILE id="uRGNlL" name="ModemIO.cpp" compile="1" resource="0" file="Source/ModemIO.cpp"/>
+        <FILE id="SliecM" name="ModemIO.h" compile="0" resource="0" file="Source/ModemIO.h"/>
+        <FILE id="PG4yk3" name="PhoneCallLogger.h" compile="0" resource="0"
+              file="Source/PhoneCallLogger.h"/>
+        <FILE id="GmqTbX" name="ResourceRepository.h" compile="0" resource="0"
+              file="Source/ResourceRepository.h"/>
+        <FILE id="d6gg3q" name="ResponseDispatcher.cpp" compile="1" resource="0"
+              file="Source/ResponseDispatcher.cpp"/>
+        <FILE id="irZbp4" name="ResponseDispatcher.h" compile="0" resource="0"
+              file="Source/ResponseDispatcher.h"/>
+        <FILE id="KkWzKs" name="ResponseLogger.h" compile="0" resource="0"
+              file="Source/ResponseLogger.h"/>
+        <FILE id="zofLjB" name="SMSLogger.cpp" compile="1" resource="0" file="Source/SMSLogger.cpp"/>
+        <FILE id="DUYDK8" name="SMSLogger.h" compile="0" resource="0" file="Source/SMSLogger.h"/>
+        <FILE id="bxHmUh" name="AlertDispatcher.cpp" compile="1" resource="0"
+              file="Source/AlertDispatcher.cpp"/>
+        <FILE id="GgDIck" name="AlertDispatcher.h" compile="0" resource="0"
+              file="Source/AlertDispatcher.h"/>
+        <FILE id="HKlnav" name="AlertLogger.cpp" compile="1" resource="0" file="Source/AlertLogger.cpp"/>
+        <FILE id="mv3C8z" name="AlertLogger.h" compile="0" resource="0" file="Source/AlertLogger.h"/>
+        <FILE id="LpVevh" name="AlertTypeRepository.cpp" compile="1" resource="0"
+              file="Source/AlertTypeRepository.cpp"/>
+        <FILE id="xoHrzM" name="AlertTypeRepository.h" compile="0" resource="0"
+              file="Source/AlertTypeRepository.h"/>
+      </GROUP>
+      <GROUP id="{FB50E7D3-04C4-3892-F4BB-ADE7FA214D21}" name="Types">
+        <FILE id="XvQQj1" name="Time.h" compile="0" resource="0" file="Source/Time.h"/>
+        <FILE id="L04NEi" name="Resource.h" compile="0" resource="0" file="Source/Resource.h"/>
+        <FILE id="M8JtLZ" name="SMS.h" compile="0" resource="0" file="Source/SMS.h"/>
+        <FILE id="Iv61xt" name="PhoneCall.h" compile="0" resource="0" file="Source/PhoneCall.h"/>
+        <FILE id="CrNFbg" name="AlertType.h" compile="0" resource="0" file="Source/AlertType.h"/>
+        <FILE id="TqLJw3" name="Alert.h" compile="0" resource="0" file="Source/Alert.h"/>
+      </GROUP>
+      <FILE id="Wr6XEB" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="u16HUg" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="JNHmyx" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" osxSDK="10.10 SDK" osxCompatibility="10.10 SDK"
+                       osxArchitecture="Native" isDebug="1" optimisation="1" targetName="implementation"
+                       headerPath="/usr/local/include" cppLanguageStandard="" cppLibType=""
+                       libraryPath="/usr/local/lib"/>
+        <CONFIGURATION name="Release" osxSDK="10.10 SDK" osxCompatibility="10.10 SDK"
+                       osxArchitecture="64BitIntel" isDebug="0" optimisation="3" targetName="implementation"
+                       headerPath="/usr/local/include" libraryPath="/usr/local/lib"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE-OSX/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
+                       targetName="implementation"/>
+        <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="3"
+                       targetName="implementation"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE-OSX/modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>

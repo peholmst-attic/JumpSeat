@@ -1,7 +1,12 @@
+build/
+xcuserdata
+
 /sources/dist/
 /sources/build/
 /sources/nbproject/private
+
 /boost*
 /sqlite*
+/JUCE-OSX
 *.db
 

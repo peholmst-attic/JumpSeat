@@ -1,0 +1,7 @@
+#ifndef RESOURCE_REPOSITORY_H
+#define	RESOURCE_REPOSITORY_H
+
+
+
+#endif	/* RESOURCE_REPOSITORY_H */
+
