@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="rM6fOj" name="JumpSeat" projectType="guiapp" version="1.0.0"
               bundleIdentifier="net.pkhapps.jumpseat" includeBinaryInAppConfig="1"
-              jucerVersion="3.2.0">
+              jucerVersion="3.1.0">
   <MAINGROUP id="z6rVze" name="JumpSeat">
     <GROUP id="{9232A964-D9EC-1FFB-9C3A-E338AF2D0369}" name="Source">
       <GROUP id="{9BDBBB73-62F9-19D3-71F3-D94E6BA8EDBB}" name="SQLite">
@@ -54,24 +54,23 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" osxSDK="10.10 SDK" osxCompatibility="10.10 SDK"
-                       osxArchitecture="Native" isDebug="1" optimisation="1" targetName="implementation"
-                       headerPath="/usr/local/include" cppLanguageStandard="" cppLibType=""
+        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="1" optimisation="1" targetName="implementation" headerPath="/usr/local/include"
+                       cppLanguageStandard="" cppLibType="" libraryPath="/usr/local/lib"/>
+        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="0" optimisation="3" targetName="implementation" headerPath="/usr/local/include"
                        libraryPath="/usr/local/lib"/>
-        <CONFIGURATION name="Release" osxSDK="10.10 SDK" osxCompatibility="10.10 SDK"
-                       osxArchitecture="64BitIntel" isDebug="0" optimisation="3" targetName="implementation"
-                       headerPath="/usr/local/include" libraryPath="/usr/local/lib"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_core" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_events" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_graphics" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_core" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
@@ -82,28 +81,28 @@
                        targetName="implementation"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_core" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_events" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_graphics" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_core" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="1"/>
   </MODULES>
   <JUCEOPTIONS/>
 </JUCERPROJECT>
