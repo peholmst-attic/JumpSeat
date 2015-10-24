@@ -10,3 +10,5 @@ xcuserdata
 /JUCE-OSX
 *.db
 
+.DS_Store
+
