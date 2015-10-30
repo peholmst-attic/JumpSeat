@@ -2,9 +2,23 @@
 
 <JUCERPROJECT id="rM6fOj" name="JumpSeat" projectType="guiapp" version="1.0.0"
               bundleIdentifier="net.pkhapps.jumpseat" includeBinaryInAppConfig="1"
-              jucerVersion="3.1.0">
+              jucerVersion="3.2.0">
   <MAINGROUP id="z6rVze" name="JumpSeat">
     <GROUP id="{9232A964-D9EC-1FFB-9C3A-E338AF2D0369}" name="Source">
+      <GROUP id="{686AD304-A657-3629-4376-3FEB405CFE6C}" name="UI">
+        <FILE id="f32nKT" name="ResponseDetailsView.cpp" compile="1" resource="0"
+              file="Source/ResponseDetailsView.cpp"/>
+        <FILE id="nMkQH1" name="ResponseDetailsView.h" compile="0" resource="0"
+              file="Source/ResponseDetailsView.h"/>
+        <FILE id="hZB5DU" name="AlertDetailsView.cpp" compile="1" resource="0"
+              file="Source/AlertDetailsView.cpp"/>
+        <FILE id="MDdjFA" name="AlertDetailsView.h" compile="0" resource="0"
+              file="Source/AlertDetailsView.h"/>
+        <FILE id="Wr6XEB" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+        <FILE id="u16HUg" name="MainComponent.cpp" compile="1" resource="0"
+              file="Source/MainComponent.cpp"/>
+        <FILE id="JNHmyx" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      </GROUP>
       <GROUP id="{9BDBBB73-62F9-19D3-71F3-D94E6BA8EDBB}" name="SQLite">
         <FILE id="lXH6KD" name="sqlite3.c" compile="1" resource="0" file="SQLite/sqlite3.c"/>
         <FILE id="SjLMX7" name="sqlite3.h" compile="0" resource="0" file="SQLite/sqlite3.h"/>
@@ -45,10 +59,6 @@
         <FILE id="CrNFbg" name="AlertType.h" compile="0" resource="0" file="Source/AlertType.h"/>
         <FILE id="TqLJw3" name="Alert.h" compile="0" resource="0" file="Source/Alert.h"/>
       </GROUP>
-      <FILE id="Wr6XEB" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
-      <FILE id="u16HUg" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/MainComponent.cpp"/>
-      <FILE id="JNHmyx" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
@@ -62,15 +72,15 @@
                        libraryPath="/usr/local/lib"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_core" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_events" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_graphics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_data_structures" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_core" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../JUCE-OSX/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
@@ -81,15 +91,15 @@
                        targetName="implementation"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_core" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_events" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_graphics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_data_structures" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="/Users/peholmst/Applications/JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_core" path="..//JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_events" path="..//JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_graphics" path="..//JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_data_structures" path="..//JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..//JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="..//JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="..//JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="..//JUCE-OSX/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="..//JUCE-OSX/modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
   </EXPORTFORMATS>

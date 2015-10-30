@@ -23,9 +23,19 @@
 
 namespace JumpSeat {
 
+    static const std::string DEFAULT_COLOR = "FFFF0000";
+    
     struct AlertType {
+        AlertType() :
+            colorHexCode(DEFAULT_COLOR) {}
+        AlertType(std::string code, std::string description) :
+            code(code),
+            description(description),
+            colorHexCode(DEFAULT_COLOR) {}
+        
         std::string code;
         std::string description;
+        std::string colorHexCode;
     };
 }
 
