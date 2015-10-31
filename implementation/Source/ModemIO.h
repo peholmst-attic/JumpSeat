@@ -34,6 +34,10 @@ namespace JumpSeat {
     private:
         OnSMS smsSignal_;
         OnPhoneCall phoneCallSignal_;
+
+        // Prevent ModemIO from being copied
+        ModemIO(const ModemIO&);
+        ModemIO& operator=(const ModemIO&);
     };
 }
 

@@ -31,6 +31,10 @@ namespace JumpSeat {
     private:
         DB& db_;
         PreparedStatement insertAlertStmt_;
+
+        // Prevent AlertLogger from being copied
+        AlertLogger(const AlertLogger&);
+        AlertLogger& operator=(const AlertLogger&);
     };
 }
 

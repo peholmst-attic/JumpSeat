@@ -33,6 +33,10 @@ namespace JumpSeat {
     private:
         DB& db_;
         PreparedStatement findByCodeStmt_;
+        
+        // Prevent AlertTypeRepository from being copied
+        AlertTypeRepository(const AlertTypeRepository&);
+        AlertTypeRepository& operator=(const AlertTypeRepository&);
     };
 }
 

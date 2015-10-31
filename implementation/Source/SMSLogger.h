@@ -31,6 +31,10 @@ namespace JumpSeat {
     private:
         DB& db_;
         PreparedStatement insertSmsStmt_;
+        
+        // Prevent SMSLogger from being copied
+        SMSLogger(const SMSLogger&);
+        SMSLogger& operator=(const SMSLogger&);
     };
 }
 

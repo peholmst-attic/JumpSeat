@@ -44,6 +44,10 @@ namespace JumpSeat {
         Alert createAlert(const SMS& sms);
         void setAlertField(const AlertField& field, const std::string& value, Alert& alert);
         std::string trim(const std::string& s);
+        
+        // Prevent AlertDispatcher from being copied
+        AlertDispatcher(const AlertDispatcher&);
+        AlertDispatcher& operator=(const AlertDispatcher&);
     };
 }
 

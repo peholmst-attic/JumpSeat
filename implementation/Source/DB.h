@@ -107,6 +107,10 @@ namespace JumpSeat {
         static DB& executeAndReturn(DB& db, const std::string& sql);
     private:
         sqlite3* db_;
+        
+        // Prevent DB from being copied
+        DB(const DB&);
+        DB& operator=(const DB&);
     };
 
     class Cursor;
