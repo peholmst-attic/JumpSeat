@@ -21,32 +21,81 @@
 
 #include <cstring>
 #include <string>
+#include <cstdio>
 
 namespace JumpSeat {
-
+    
     class DateTime {
     public:
 
         DateTime() {
-            time_t now = time(NULL);
-            timestamp_ = *localtime(&now);
+            timestamp_ = time(NULL);
         }
 
-        DateTime(const std::tm timestamp) : timestamp_(timestamp) {
+        DateTime(const time_t timestamp) : timestamp_(timestamp) {
         }
 
         std::string toString(const std::string& format) const {
             char buf[100];
-            strftime(buf, sizeof (buf), format.c_str(), &timestamp_);
+            strftime(buf, sizeof (buf), format.c_str(), localtime(&timestamp_));
             return std::string(buf);
         }
         
         std::string toISO8601() const {
             return toString("%FT%T");
         }
+        
+        time_t getTimestamp() const {
+            return timestamp_;
+        }
     private:
-        std::tm timestamp_;
+        time_t timestamp_;
     };
+    
+    class Duration {
+    public:
+        
+        Duration(const DateTime from, const DateTime to) : from_(from), to_(to) {
+            diffInSeconds_ = (long) difftime(to.getTimestamp(), from.getTimestamp());
+            seconds_ = (int) diffInSeconds_ % 60;
+            minutes_ = (int) (diffInSeconds_ / 60) % 60;
+            hours_ = (int) diffInSeconds_ / 3600;
+        }
+        
+        int getHours() const {
+            return hours_;
+        }
+        
+        int getMinutes() const {
+            return minutes_;
+        }
+        
+        int getSeconds() const {
+            return seconds_;
+        }
+        
+        DateTime getFrom() const {
+            return from_;
+        }
+        
+        DateTime getTo() const {
+            return to_;
+        }
+        
+        std::string toString() const {
+            char buf[15];
+            sprintf(buf, "%02d:%02d:%02d", hours_, minutes_, seconds_);
+            return std::string(buf);
+        }
+    private:
+        DateTime from_;
+        DateTime to_;
+        long diffInSeconds_;
+        int hours_;
+        int minutes_;
+        int seconds_;
+    };
+
 }
 
 #endif	/* TIME_H */
