@@ -19,8 +19,8 @@
 #include "AlertTypeRepository.h"
 
 JumpSeat::AlertTypeRepository::AlertTypeRepository(DB& db) :
-db_(DB::executeAndReturn(db, "CREATE TABLE IF NOT EXISTS alerttypes (code TEXT PRIMARY KEY, description TEXT);")),
-findByCodeStmt_(db, "SELECT code, description FROM alerttypes WHERE code = ?1;") {
+    db_(DB::executeAndReturn(db, "CREATE TABLE IF NOT EXISTS alerttypes (code TEXT PRIMARY KEY, description TEXT);")),
+    findByCodeStmt_(db, "SELECT code, description FROM alerttypes WHERE code = ?1;") {
 }
 
 boost::optional<JumpSeat::AlertType> JumpSeat::AlertTypeRepository::findByCode(const std::string& code) {

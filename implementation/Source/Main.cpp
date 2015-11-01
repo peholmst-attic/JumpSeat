@@ -22,7 +22,9 @@
 #include "AlertDispatcher.h"
 #include "AlertTypeRepository.h"
 #include "AlertLogger.h"
+#include "ResourceRepository.h"
 #include "SMSLogger.h"
+
 #include "MainComponent.h"
 
 class JumpSeatApplication: public JUCEApplication {
@@ -46,6 +48,7 @@ public:
         modemIO = new JumpSeat::ModemIO();
         smsLogger = new JumpSeat::SMSLogger(*db, *modemIO);
         alertTypeRepository = new JumpSeat::AlertTypeRepository(*db);
+        resourceRepository = new JumpSeat::ResourceRepository(*db);
         
         alertDispatcher = new JumpSeat::AlertDispatcher(*alertTypeRepository, *modemIO);
         
@@ -59,7 +62,7 @@ public:
             });
         
 //        auto responseDispatcher = JumpSeat::ResponseDispatcher();
-        alertLogger = new JumpSeat::AlertLogger(*db);
+        alertLogger = new JumpSeat::AlertLogger(*db, *alertDispatcher);
         
         // Set up handlers
 //        modemIO->addOnSMSHandler(smsLogger.get());
@@ -124,9 +127,10 @@ public:
 private:
     ScopedPointer<MainWindow> mainWindow;
     ScopedPointer<JumpSeat::DB> db;
+    ScopedPointer<JumpSeat::AlertTypeRepository> alertTypeRepository;
+    ScopedPointer<JumpSeat::ResourceRepository> resourceRepository;
     ScopedPointer<JumpSeat::ModemIO> modemIO;
     ScopedPointer<JumpSeat::SMSLogger> smsLogger;
-    ScopedPointer<JumpSeat::AlertTypeRepository> alertTypeRepository;
     ScopedPointer<JumpSeat::AlertDispatcher> alertDispatcher;
     ScopedPointer<JumpSeat::AlertLogger> alertLogger;
 };

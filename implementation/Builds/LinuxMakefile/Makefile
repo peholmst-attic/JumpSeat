@@ -57,6 +57,7 @@ OBJECTS := \
   $(OBJDIR)/sqlite3_12c21d59.o \
   $(OBJDIR)/DB_3b6f56e7.o \
   $(OBJDIR)/ModemIO_433aca31.o \
+  $(OBJDIR)/ResourceRepository_5d180781.o \
   $(OBJDIR)/ResponseDispatcher_34a7cb51.o \
   $(OBJDIR)/SMSLogger_dbe0bd2a.o \
   $(OBJDIR)/AlertDispatcher_e1d91804.o \
@@ -127,6 +128,11 @@ $(OBJDIR)/DB_3b6f56e7.o: ../../Source/DB.cpp
 $(OBJDIR)/ModemIO_433aca31.o: ../../Source/ModemIO.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling ModemIO.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/ResourceRepository_5d180781.o: ../../Source/ResourceRepository.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling ResourceRepository.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/ResponseDispatcher_34a7cb51.o: ../../Source/ResponseDispatcher.cpp

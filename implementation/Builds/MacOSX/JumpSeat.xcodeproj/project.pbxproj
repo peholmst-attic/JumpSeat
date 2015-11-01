@@ -25,6 +25,7 @@
 		B012CC204BACB1582146D492 = {isa = PBXBuildFile; fileRef = 23FA338C0E89DEFBC31B08B3; };
 		BC3B46C3F00CE1FFE529AC83 = {isa = PBXBuildFile; fileRef = EFC5ABAB8A13D711521B30B6; };
 		B1D7A639989368CAA5B8AAD1 = {isa = PBXBuildFile; fileRef = 5FB953B883055780B8DE6EDA; };
+		F27843904C167720B36D5BC2 = {isa = PBXBuildFile; fileRef = 8BDFB41F9D2D4D1B0052CC86; };
 		CBD9461D647D8A70BCDA6FAD = {isa = PBXBuildFile; fileRef = C7D297250467E3E1525604E2; };
 		8543D052905E3525BC8C714B = {isa = PBXBuildFile; fileRef = 17F49314CE794F9FA919081B; };
 		E67A12F47C905B6AF2587DDD = {isa = PBXBuildFile; fileRef = 365BEE6E9BFD6D94B5991790; };
@@ -510,6 +511,7 @@
 		8B39E764477142C61A5AAC5C = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_MouseInputSource.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/mouse/juce_MouseInputSource.cpp"; sourceTree = "SOURCE_ROOT"; };
 		8B5335DC89E841564ED2B2B1 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_StretchableObjectResizer.h"; path = "../../JuceLibraryCode/modules/juce_gui_basics/layout/juce_StretchableObjectResizer.h"; sourceTree = "SOURCE_ROOT"; };
 		8BAD377464DF17588FEF5ECD = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_AnimatedAppComponent.h"; path = "../../JuceLibraryCode/modules/juce_gui_extra/misc/juce_AnimatedAppComponent.h"; sourceTree = "SOURCE_ROOT"; };
+		8BDFB41F9D2D4D1B0052CC86 = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ResourceRepository.cpp; path = ../../Source/ResourceRepository.cpp; sourceTree = "SOURCE_ROOT"; };
 		8C0F606C1B36959EE3A0B03D = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_Socket.h"; path = "../../JuceLibraryCode/modules/juce_core/network/juce_Socket.h"; sourceTree = "SOURCE_ROOT"; };
 		8C1081145111ED13D993C1EB = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "juce_ComponentPeer.cpp"; path = "../../JuceLibraryCode/modules/juce_gui_basics/windows/juce_ComponentPeer.cpp"; sourceTree = "SOURCE_ROOT"; };
 		8C4DAF8DB2E2AE2A524CEDD9 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "juce_FileLogger.h"; path = "../../JuceLibraryCode/modules/juce_core/logging/juce_FileLogger.h"; sourceTree = "SOURCE_ROOT"; };
@@ -871,6 +873,7 @@
 					5FB953B883055780B8DE6EDA,
 					26F334868D58D81EC32581FA,
 					5E8C1A38C8FFFD5E9BBA246E,
+					8BDFB41F9D2D4D1B0052CC86,
 					EBEC0693B3D34E09CAF3B7EC,
 					C7D297250467E3E1525604E2,
 					580BE81B146B91673B765D88,
@@ -1935,6 +1938,7 @@
 					B012CC204BACB1582146D492,
 					BC3B46C3F00CE1FFE529AC83,
 					B1D7A639989368CAA5B8AAD1,
+					F27843904C167720B36D5BC2,
 					CBD9461D647D8A70BCDA6FAD,
 					8543D052905E3525BC8C714B,
 					E67A12F47C905B6AF2587DDD,

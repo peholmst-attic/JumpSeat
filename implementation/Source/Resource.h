@@ -19,7 +19,20 @@
 #ifndef RESOURCE_H
 #define	RESOURCE_H
 
+#include <string>
 
+namespace JumpSeat {
+        
+    struct Resource {
+        std::string name;
+        std::string phoneNumber;
+        bool ems;
+        bool driver;
+        bool officer;
+        bool scba;
+        bool water;
+    };
+}
 
 #endif	/* RESOURCE_H */
 

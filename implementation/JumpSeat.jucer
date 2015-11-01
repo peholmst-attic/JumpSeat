@@ -32,6 +32,8 @@
         <FILE id="SliecM" name="ModemIO.h" compile="0" resource="0" file="Source/ModemIO.h"/>
         <FILE id="PG4yk3" name="PhoneCallLogger.h" compile="0" resource="0"
               file="Source/PhoneCallLogger.h"/>
+        <FILE id="zfiDQv" name="ResourceRepository.cpp" compile="1" resource="0"
+              file="Source/ResourceRepository.cpp"/>
         <FILE id="GmqTbX" name="ResourceRepository.h" compile="0" resource="0"
               file="Source/ResourceRepository.h"/>
         <FILE id="d6gg3q" name="ResponseDispatcher.cpp" compile="1" resource="0"

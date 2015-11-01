@@ -19,7 +19,26 @@
 #ifndef RESOURCE_REPOSITORY_H
 #define	RESOURCE_REPOSITORY_H
 
+#include <boost/optional.hpp>
 
+#include "Resource.h"
+#include "DB.h"
+
+namespace JumpSeat {
+    
+    class ResourceRepository {
+    public:
+        ResourceRepository(DB& db);
+        boost::optional<Resource> findByPhoneNumber(const std::string& phoneNumber);
+    private:
+        DB& db_;
+        PreparedStatement findByPhoneNumberStmt_;
+        
+        // Prevent ResourceRepository from being copied
+        ResourceRepository(const ResourceRepository&);
+        ResourceRepository& operator=(const ResourceRepository&);
+    };
+}
 
 #endif	/* RESOURCE_REPOSITORY_H */
 

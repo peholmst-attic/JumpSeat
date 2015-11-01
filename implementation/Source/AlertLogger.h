@@ -24,10 +24,10 @@
 
 namespace JumpSeat {
 
-    class AlertLogger {
+    class AlertLogger : public AlertSubscriber {
     public:
-        AlertLogger(DB& db);
-        void onReceiveAlert(const Alert& alert);
+        AlertLogger(DB& db, AlertPublisher& alertPublisher);
+        void onReceiveAlert(const Alert& alert) override;
     private:
         DB& db_;
         PreparedStatement insertAlertStmt_;
