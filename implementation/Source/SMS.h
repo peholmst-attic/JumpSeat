@@ -32,8 +32,38 @@ namespace JumpSeat {
         DateTime timestamp;
     };
 
-    typedef boost::signals2::signal<void (const SMS&) > OnSMS;
+    typedef boost::signals2::signal<void (const SMS&)> OnSMS;
     typedef OnSMS::slot_type OnSMSHandler;
+    
+    class SMSPublisher {
+    public:
+        boost::signals2::connection connect(const OnSMSHandler& handler) {
+            return signal_.connect(handler);
+        }
+    protected:
+        void publishSMS(const SMS& sms) {
+            signal_(sms);
+        }
+    private:
+        OnSMS signal_;
+    };
+    
+    class SMSSubscriber {
+    public:
+        SMSSubscriber(SMSPublisher& publisher) : publisher_(publisher) {
+            connection_ = publisher_.connect(boost::bind(&SMSSubscriber::onReceiveSMS, this, _1));
+        }
+        
+        virtual ~SMSSubscriber() {
+            connection_.disconnect();
+        }
+        
+        virtual void onReceiveSMS(const SMS& sms) = 0;
+    private:
+        SMSPublisher& publisher_;
+        boost::signals2::connection connection_;
+    };
+    
 }
 
 #endif	/* SMS_H */

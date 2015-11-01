@@ -17,8 +17,13 @@
  */
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "MainComponent.h"
 
+#include "ModemIO.h"
+#include "AlertDispatcher.h"
+#include "AlertTypeRepository.h"
+#include "AlertLogger.h"
+#include "SMSLogger.h"
+#include "MainComponent.h"
 
 class JumpSeatApplication: public JUCEApplication {
 public:
@@ -33,11 +38,37 @@ public:
     }
     
     bool moreThanOneInstanceAllowed() override {
-        return true;
+        return false;
     }
 
     void initialise(const String& commandLine) override {
-        mainWindow = new MainWindow (getApplicationName());
+        db = new JumpSeat::DB("/Users/petterprivate/Projects/JumpSeat/jumpseat.db");
+        modemIO = new JumpSeat::ModemIO();
+        smsLogger = new JumpSeat::SMSLogger(*db, *modemIO);
+        alertTypeRepository = new JumpSeat::AlertTypeRepository(*db);
+        
+        alertDispatcher = new JumpSeat::AlertDispatcher(*alertTypeRepository, *modemIO);
+        
+        alertDispatcher->setAlertRegex(
+            std::regex("^TKU ([A-Za-z\\s]*[0-9]+)[\\w\\s],([\\w\\s]*,[\\w\\s]*),([\\w\\s]*,[\\w\\s]*,[\\w\\s]*),(.*)"),
+            std::vector<JumpSeat::AlertField> {
+                JumpSeat::AlertField::code,
+                JumpSeat::AlertField::municipality,
+                JumpSeat::AlertField::address,
+                JumpSeat::AlertField::details
+            });
+        
+//        auto responseDispatcher = JumpSeat::ResponseDispatcher();
+        alertLogger = new JumpSeat::AlertLogger(*db);
+        
+        // Set up handlers
+//        modemIO->addOnSMSHandler(smsLogger.get());
+//        modemIO->addOnSMSHandler(boost::bind(&JumpSeat::AlertDispatcher::onReceiveSMS, *alertDispatcher, _1));
+//        modemIO.addOnSMSHandler(boost::bind(&JumpSeat::ResponseDispatcher::onReceiveSMS, &responseDispatcher, _1));
+        
+        //alertDispatcher->addOnAlertHandler(boost::bind(&JumpSeat::AlertLogger::onReceiveAlert, &alertLogger, _1));
+        
+        mainWindow = new MainWindow(getApplicationName());
     }
 
     void shutdown() override {
@@ -48,10 +79,7 @@ public:
         quit();
     }
 
-    void anotherInstanceStarted (const String& commandLine) override {
-        // When another instance of the app is launched while this one is running,
-        // this method is invoked, and the commandLine parameter tells you what
-        // the other instance's command-line arguments were.
+    void anotherInstanceStarted(const String& commandLine) override {
     }
 
     /**
@@ -95,6 +123,12 @@ public:
 
 private:
     ScopedPointer<MainWindow> mainWindow;
+    ScopedPointer<JumpSeat::DB> db;
+    ScopedPointer<JumpSeat::ModemIO> modemIO;
+    ScopedPointer<JumpSeat::SMSLogger> smsLogger;
+    ScopedPointer<JumpSeat::AlertTypeRepository> alertTypeRepository;
+    ScopedPointer<JumpSeat::AlertDispatcher> alertDispatcher;
+    ScopedPointer<JumpSeat::AlertLogger> alertLogger;
 };
 
 //==============================================================================

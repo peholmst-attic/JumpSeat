@@ -28,17 +28,15 @@
 
 namespace JumpSeat {
 
-    class AlertDispatcher {
+    class AlertDispatcher: public SMSSubscriber, public AlertPublisher {
     public:
-        AlertDispatcher(AlertTypeRepository& alertTypeRepository);
-        void addOnAlertHandler(const OnAlertHandler& handler);
+        AlertDispatcher(AlertTypeRepository& alertTypeRepository, SMSPublisher& smsPublisher);
         void setAlertRegex(const std::regex& regex, const std::vector<AlertField>& fields);
-        void onReceiveSMS(const SMS& sms);
+        void onReceiveSMS(const SMS& sms) override;
     private:
         AlertTypeRepository& alertTypeRepository_;
         std::regex regex_;
         std::vector<AlertField> fields_;
-        OnAlert alertSignal_;
 
         bool isAlert(const SMS& sms);
         Alert createAlert(const SMS& sms);

@@ -34,6 +34,35 @@ namespace JumpSeat {
 
     typedef boost::signals2::signal<void (const PhoneCall&) > OnPhoneCall;
     typedef OnPhoneCall::slot_type OnPhoneCallHandler;
+    
+    class PhoneCallPublisher {
+    public:
+        boost::signals2::connection connect(const OnPhoneCallHandler& handler) {
+            return signal_.connect(handler);
+        }
+    protected:
+        void publishPhoneCall(const PhoneCall& phoneCall) {
+            signal_(phoneCall);
+        }
+    private:
+        OnPhoneCall signal_;
+    };
+    
+    class PhoneCallSubscriber {
+    public:
+        PhoneCallSubscriber(PhoneCallPublisher& publisher) : publisher_(publisher) {
+            connection_ = publisher_.connect(boost::bind(&PhoneCallSubscriber::onReceivePhoneCall, this, _1));
+        }
+        
+        virtual ~PhoneCallSubscriber() {
+            connection_.disconnect();
+        }
+        
+        virtual void onReceivePhoneCall(const PhoneCall& phoneCall) = 0;
+    private:
+        PhoneCallPublisher& publisher_;
+        boost::signals2::connection connection_;
+    };
 }
 
 #endif	/* PHONE_CALL_H */

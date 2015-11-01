@@ -16,17 +16,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "SMSLogger.h"
+#ifndef TIMERVIEW_H_INCLUDED
+#define TIMERVIEW_H_INCLUDED
 
-JumpSeat::SMSLogger::SMSLogger(DB& db, SMSPublisher& smsPublisher) :
-    SMSSubscriber(smsPublisher),
-    db_(DB::executeAndReturn(db, "CREATE TABLE IF NOT EXISTS smslog (id INTEGER PRIMARY KEY, sender TEXT, msg TEXT, ts DATETIME);")),
-    insertSmsStmt_(db, "INSERT INTO smslog (sender, msg, ts) VALUES (?1,?2,?3);") {
-}
+#include <boost/optional.hpp>
 
-void JumpSeat::SMSLogger::onReceiveSMS(const SMS& sms) {
-    insertSmsStmt_.setText(1, sms.sender);
-    insertSmsStmt_.setText(2, sms.message);
-    insertSmsStmt_.setText(3, sms.timestamp.toISO8601());
-    insertSmsStmt_.execute();
-}
+#include "../JuceLibraryCode/JuceHeader.h"
+
+#include "Time.h"
+
+class TimerView: public Component, private Timer {
+public:
+    TimerView();
+    ~TimerView();
+
+    void paint (Graphics&) override;
+    void resized() override;
+    void countUpFrom(const JumpSeat::DateTime& dateTime);
+    void showClock();
+private:
+    void timerCallback() override;
+    boost::optional<JumpSeat::DateTime> countUpFrom_;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TimerView)
+};
+
+#endif  // TIMERVIEW_H_INCLUDED

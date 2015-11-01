@@ -24,10 +24,10 @@
 
 namespace JumpSeat {
 
-    class SMSLogger {
+    class SMSLogger: public SMSSubscriber {
     public:
-        SMSLogger(DB& db);
-        void onReceiveSMS(const SMS& sms);
+        SMSLogger(DB& db, SMSPublisher& smsPublisher);
+        void onReceiveSMS(const SMS& sms) override;
     private:
         DB& db_;
         PreparedStatement insertSmsStmt_;

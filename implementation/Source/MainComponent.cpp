@@ -26,14 +26,15 @@ MainContentComponent::MainContentComponent() {
     // Sample
     
     JumpSeat::Alert alert;
-    alert.type.code = "402";
-    alert.type.description = "Byggnadsbrand: medelstor";
+    alert.type.code = "203";
+    alert.type.description = "Trafikolycka: medelstor";
+    alert.type.colorHexCode = "FF00FF00";
     alert.municipality = "PARGAS";
-    alert.address = "SKOLGATAN,1";
-    alert.details = "RVSPG31,RVSPG21,,,tilläggsinfo";
+    alert.address = "SKÄRGÅRDSVÄGEN,AIRISTOVÄGEN";
+    alert.details = "RVSPG11,RVSPG31,RVSPG21,RVSIT3,EVS5211,,tilläggsinfo";
     
     alertDetailsView_.setAlert(alert);
-    startFlashing(Colours::red);
+    startFlashing(Colour::fromString(String(alert.type.colorHexCode)));
 }
 
 MainContentComponent::~MainContentComponent() {

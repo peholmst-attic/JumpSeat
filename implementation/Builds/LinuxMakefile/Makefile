@@ -49,6 +49,7 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS := \
+  $(OBJDIR)/TimerView_dd244beb.o \
   $(OBJDIR)/ResponseDetailsView_1096fc67.o \
   $(OBJDIR)/AlertDetailsView_98f4614.o \
   $(OBJDIR)/Main_90ebc5c2.o \
@@ -87,6 +88,11 @@ clean:
 strip:
 	@echo Stripping JumpSeat
 	-@strip --strip-unneeded $(OUTDIR)/$(TARGET)
+
+$(OBJDIR)/TimerView_dd244beb.o: ../../Source/TimerView.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling TimerView.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/ResponseDetailsView_1096fc67.o: ../../Source/ResponseDetailsView.cpp
 	-@mkdir -p $(OBJDIR)

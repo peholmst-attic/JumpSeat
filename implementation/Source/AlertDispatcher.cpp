@@ -19,12 +19,9 @@
 #include "AlertDispatcher.h"
 #include <iostream>
 
-JumpSeat::AlertDispatcher::AlertDispatcher(JumpSeat::AlertTypeRepository& alertTypeRepository) :
-alertTypeRepository_(alertTypeRepository) {
-}
-
-void JumpSeat::AlertDispatcher::addOnAlertHandler(const OnAlertHandler& handler) {
-    alertSignal_.connect(handler);
+JumpSeat::AlertDispatcher::AlertDispatcher(AlertTypeRepository& alertTypeRepository, SMSPublisher& smsPublisher) :
+    SMSSubscriber(smsPublisher),
+    alertTypeRepository_(alertTypeRepository) {
 }
 
 void JumpSeat::AlertDispatcher::setAlertRegex(const std::regex& regex, const std::vector<AlertField>& fields) {
@@ -35,7 +32,7 @@ void JumpSeat::AlertDispatcher::setAlertRegex(const std::regex& regex, const std
 void JumpSeat::AlertDispatcher::onReceiveSMS(const SMS& sms) {
     if (isAlert(sms)) {
         Alert alert = createAlert(sms);
-        alertSignal_(alert);
+        publishAlert(alert);
     }
 }
 

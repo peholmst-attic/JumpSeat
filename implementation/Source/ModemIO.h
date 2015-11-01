@@ -26,15 +26,11 @@
 
 namespace JumpSeat {
 
-    class ModemIO {
+    class ModemIO: public SMSPublisher, public PhoneCallPublisher {
     public:
-        void addOnSMSHandler(const OnSMSHandler& handler);
-        void addOnPhoneCallHandler(const OnPhoneCallHandler& handler);
+        ModemIO();
         void signalFakeSms(const std::string& message);
     private:
-        OnSMS smsSignal_;
-        OnPhoneCall phoneCallSignal_;
-
         // Prevent ModemIO from being copied
         ModemIO(const ModemIO&);
         ModemIO& operator=(const ModemIO&);

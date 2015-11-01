@@ -53,6 +53,35 @@ namespace JumpSeat {
 
     typedef boost::signals2::signal<void (const Alert&) > OnAlert;
     typedef OnAlert::slot_type OnAlertHandler;
+    
+    class AlertPublisher {
+    public:
+        boost::signals2::connection connect(const OnAlertHandler& handler) {
+            return signal_.connect(handler);
+        }
+    protected:
+        void publishAlert(const Alert& alert) {
+            signal_(alert);
+        }
+    private:
+        OnAlert signal_;
+    };
+    
+    class AlertSubscriber {
+    public:
+        AlertSubscriber(AlertPublisher& publisher) : publisher_(publisher) {
+            connection_ = publisher_.connect(boost::bind(&AlertSubscriber::onReceiveAlert, this, _1));
+        }
+        
+        virtual ~AlertSubscriber() {
+            connection_.disconnect();
+        }
+        
+        virtual void onReceiveAlert(const Alert& alert) = 0;
+    private:
+        AlertPublisher& publisher_;
+        boost::signals2::connection connection_;
+    };
 }
 
 #endif	/* ALERT_H */

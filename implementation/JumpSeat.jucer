@@ -6,6 +6,8 @@
   <MAINGROUP id="z6rVze" name="JumpSeat">
     <GROUP id="{9232A964-D9EC-1FFB-9C3A-E338AF2D0369}" name="Source">
       <GROUP id="{686AD304-A657-3629-4376-3FEB405CFE6C}" name="UI">
+        <FILE id="wiNpbS" name="TimerView.cpp" compile="1" resource="0" file="Source/TimerView.cpp"/>
+        <FILE id="gHibxS" name="TimerView.h" compile="0" resource="0" file="Source/TimerView.h"/>
         <FILE id="f32nKT" name="ResponseDetailsView.cpp" compile="1" resource="0"
               file="Source/ResponseDetailsView.cpp"/>
         <FILE id="nMkQH1" name="ResponseDetailsView.h" compile="0" resource="0"

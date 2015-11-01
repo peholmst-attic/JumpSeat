@@ -22,18 +22,21 @@
 #include <boost/optional.hpp>
 
 #include "../JuceLibraryCode/JuceHeader.h"
+
 #include "Alert.h"
+#include "TimerView.h"
 
 class AlertDetailsView: public Component {
 public:
     AlertDetailsView();
     ~AlertDetailsView();
 
-    void paint(Graphics& g);
-    void resized();
+    void paint(Graphics& g) override;
+    void resized() override;
     
     void setAlert(boost::optional<JumpSeat::Alert> alert);
 private:
+    TimerView timerView_;
     boost::optional<JumpSeat::Alert> alert_;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AlertDetailsView)
 };

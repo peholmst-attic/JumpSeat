@@ -16,13 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "../JuceLibraryCode/JuceHeader.h"
 #include "AlertDetailsView.h"
 
 AlertDetailsView::AlertDetailsView(): alert_(boost::none) {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
-
+    addAndMakeVisible(timerView_);
 }
 
 AlertDetailsView::~AlertDetailsView() {
@@ -32,13 +29,32 @@ void AlertDetailsView::paint(Graphics& g) {
     if (alert_) {
         JumpSeat::Alert alert = alert_.get();
         g.fillAll(Colours::black);
-        g.setColour(Colours::whitesmoke);
         
-        g.setFont(20.f);
-        g.drawSingleLineText(String(alert.type.code), 5, 5, Justification::left);
-        g.drawSingleLineText(String(alert.type.description), 20, 20, Justification::left);
+        int margin = 10;
+        int lineHeight = getHeight() / 4;
+        int lineWidth = getWidth() - margin * 2;
+        
+        g.setFont(lineHeight * 0.8);
+        g.getCurrentFont().setBold(true);
+        g.setColour(Colour::fromString(String(alert.type.colorHexCode)));
+        
+        g.drawText(String(alert.type.description), margin, 0, lineWidth, lineHeight, Justification::left, true);
+
+        g.setColour(Colours::snow);
+        if (alert.municipality) {
+            g.drawText(String(alert.municipality.get()), margin, lineHeight, lineWidth, lineHeight, Justification::left, true);
+        }
+        if (alert.address) {
+            g.drawText(String(alert.address.get()), margin, lineHeight * 2, lineWidth, lineHeight, Justification::left, true);
+        }
+        
+        g.setColour(Colours::silver);
+        g.getCurrentFont().setBold(false);
+        if (alert.details) {
+            g.drawText(String(alert.details.get()), margin, lineHeight * 3, lineWidth, lineHeight, Justification::left, true);
+        }
     } else {
-        g.fillAll(Colours::white);
+        g.fillAll(Colours::black);
     }
 //    g.fillAll (Colour::fromString(<#juce::StringRef encodedColourString#>));   // clear the background
 
@@ -52,12 +68,17 @@ void AlertDetailsView::paint(Graphics& g) {
 }
 
 void AlertDetailsView::resized() {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
-
+    int h = getHeight() / 2;
+    int w = getWidth();
+    timerView_.setBounds(w - h * 2 - 20, 0, h * 2, h);
 }
 
 void AlertDetailsView::setAlert(boost::optional<JumpSeat::Alert> alert) {
     alert_ = alert;
+    if (alert_) {
+        timerView_.countUpFrom(alert_.get().timestamp);
+    } else {
+        timerView_.showClock();
+    }
     repaint();
 }

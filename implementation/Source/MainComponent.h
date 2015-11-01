@@ -24,9 +24,7 @@
 #include "AlertDetailsView.h"
 #include "ResponseDetailsView.h"
 
-class MainContentComponent : public Component,
-                             public MenuBarModel,
-                             private Timer {
+class MainContentComponent : public Component, public MenuBarModel, private Timer {
 public:
     MainContentComponent();
     ~MainContentComponent();
